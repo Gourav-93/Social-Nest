@@ -243,13 +243,38 @@ textarea.input-field {
   border-bottom: 1px solid var(--gray-100);
 }
 
+.post-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.post-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.75rem;
+  border: 1px solid var(--gray-300);
+}
+
+.post-header-info {
+  display: flex;
+  flex-direction: column;
+}
+
 .post-author {
   font-weight: 600;
-  font-size: 1.125rem;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.post-author:hover {
+  color: var(--gray-500);
 }
 
 .post-date {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: var(--gray-500);
 }
 

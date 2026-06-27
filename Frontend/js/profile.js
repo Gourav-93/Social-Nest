@@ -42,8 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const pic = document.getElementById('postImageUrl').value;
         const caption = document.getElementById('postCaption').value;
 
+        const userObjStr = localStorage.getItem('user');
+        let userId = null;
+        if (userObjStr) {
+            const userObj = JSON.parse(userObjStr);
+            userId = userObj.id;
+        }
+
         try {
-            await window.api.uploadPost({ pic, caption });
+            await window.api.uploadPost({ pic, caption, userId });
             
             showMessage('Post uploaded successfully!', 'success');
             uploadForm.reset();
@@ -75,13 +82,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 const postElement = document.createElement('article');
                 postElement.className = 'post-card post-card-sm';
                 
-                const authorName = post.authorName || 'You'; 
+                const authorName = post.authorName || 'You';
+                const userProfileImage = post.userProfileImage || 'https://via.placeholder.com/40';
                 const datePosted = post.datePosted || new Date().toLocaleDateString();
 
                 postElement.innerHTML = `
                     <header class="post-header">
-                        <h3 class="post-author">${authorName}</h3>
-                        <time class="post-date">${datePosted}</time>
+                        <div class="post-header-left">
+                            <img src="${userProfileImage}" alt="${authorName}'s avatar" class="post-avatar" onerror="this.src='https://placehold.co/40x40/eeeeee/31343c?text=U'" />
+                            <div class="post-header-info">
+                                <h3 class="post-author">${authorName}</h3>
+                                <time class="post-date">${datePosted}</time>
+                            </div>
+                        </div>
                     </header>
                     <img
                         src="${post.pic || 'https://via.placeholder.com/400'}"

@@ -16,6 +16,7 @@ public class PostModel {
     @jakarta.persistence.Column(columnDefinition = "LONGTEXT")
     private String pic;
     private String caption;
+    private Long userId;
 
     public PostModel() {
     }
@@ -48,5 +49,13 @@ public class PostModel {
 
     public void setCaption(String caption) {
         this.caption = caption;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

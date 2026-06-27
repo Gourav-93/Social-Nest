@@ -20,13 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 const postElement = document.createElement('article');
                 postElement.className = 'post-card';
                 
-                const authorName = post.authorName || 'Anonymous'; 
+                const authorName = post.authorName || 'Anonymous';
+                const userProfileImage = post.userProfileImage || 'https://via.placeholder.com/40';
                 const datePosted = post.datePosted || new Date().toLocaleDateString();
 
                 postElement.innerHTML = `
                     <header class="post-header">
-                        <h3 class="post-author">${authorName}</h3>
-                        <time class="post-date">${datePosted}</time>
+                        <div class="post-header-left">
+                            <img src="${userProfileImage}" alt="${authorName}'s avatar" class="post-avatar" onerror="this.src='https://placehold.co/40x40/eeeeee/31343c?text=U'" />
+                            <div class="post-header-info">
+                                <h3 class="post-author">${authorName}</h3>
+                                <time class="post-date">${datePosted}</time>
+                            </div>
+                        </div>
                     </header>
                     <img
                         src="${post.pic || 'https://via.placeholder.com/400'}"
