@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your Circle Hub profile.">
+    <title>Circle Hub - Profile</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2><a href="index.html">Circle Hub</a></h2>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="nav-link">Explore</a></li>
+            <!-- authLinks injected via main.js -->
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <header class="page-header">
+            <h1 class="text-center">Profile</h1>
+        </header>
+
+        <section class="upload-section" aria-label="Upload Post">
+            <form id="uploadForm" class="upload-form-wrapper form-group">
+                <div id="uploadError" class="alert alert-error hidden" role="alert"></div>
+                <div id="uploadSuccess" class="alert alert-success hidden" role="alert"></div>
+                
+                <label for="postImageUrl" class="hidden">Image URL</label>
+                <input type="url" id="postImageUrl" placeholder="Image URL" required class="input-field" />
+                
+                <label for="postCaption" class="hidden">Caption</label>
+                <textarea id="postCaption" placeholder="Write a caption..." required class="input-field"></textarea>
+                
+                <div class="text-center">
+                    <button type="submit" id="uploadBtn" class="btn btn-primary">Upload Post</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="postsSection" class="feed-container" aria-label="Your Posts">
+            <!-- User posts injected dynamically by profile.js -->
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

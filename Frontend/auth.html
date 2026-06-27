@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login or register for Circle Hub.">
+    <title>Circle Hub - Auth</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2><a href="index.html">Circle Hub</a></h2>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="nav-link">Explore</a></li>
+            <!-- authLinks injected via main.js -->
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="auth-wrapper">
+        <div class="card">
+            
+            <div class="auth-tabs" id="authTabs">
+                <button id="loginTabBtn" class="tab-btn active" aria-selected="true" aria-controls="loginForm">Login</button>
+                <button id="registerTabBtn" class="tab-btn" aria-selected="false" aria-controls="registerForm">Register</button>
+            </div>
+
+            <div id="authMessage" class="alert hidden" role="alert"></div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="form-group">
+                <label for="loginEmail" class="hidden">Email</label>
+                <input type="email" id="loginEmail" placeholder="Email" required class="input-field" />
+                
+                <label for="loginPassword" class="hidden">Password</label>
+                <input type="password" id="loginPassword" placeholder="Password" required class="input-field" />
+                
+                <button type="submit" id="loginBtn" class="btn btn-primary">Login</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="form-group hidden">
+                <label for="registerName" class="hidden">Full Name</label>
+                <input type="text" id="registerName" placeholder="Full Name" required class="input-field" />
+                
+                <label for="registerAvatar" class="hidden">Avatar URL</label>
+                <input type="url" id="registerAvatar" placeholder="Avatar URL" required class="input-field" />
+                
+                <label for="registerEmail" class="hidden">Email</label>
+                <input type="email" id="registerEmail" placeholder="Email" required class="input-field" />
+                
+                <label for="registerPassword" class="hidden">Password</label>
+                <input type="password" id="registerPassword" placeholder="Password" required class="input-field" />
+                
+                <button type="submit" id="registerBtn" class="btn btn-primary">Register</button>
+            </form>
+
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
