@@ -1,31 +1,28 @@
 package com.example.instagram.Dto;
 
 public class PostDTO {
-    private Long id;
-    private String pic;
+    private Long postId;
+    private String image;
     private String caption;
-    private Long userId;
-    private String authorName;
-    private String userProfileImage;
-    private String datePosted;
+    private String createdDate;
 
     public PostDTO() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getPostId() {
+        return postId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPostId(Long postId) {
+        this.postId = postId;
     }
 
-    public String getPic() {
-        return pic;
+    public String getImage() {
+        return image;
     }
 
-    public void setPic(String pic) {
-        this.pic = pic;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getCaption() {
@@ -36,35 +33,11 @@ public class PostDTO {
         this.caption = caption;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getCreatedDate() {
+        return createdDate;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getAuthorName() {
-        return authorName;
-    }
-
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
-
-    public String getUserProfileImage() {
-        return userProfileImage;
-    }
-
-    public void setUserProfileImage(String userProfileImage) {
-        this.userProfileImage = userProfileImage;
-    }
-
-    public String getDatePosted() {
-        return datePosted;
-    }
-
-    public void setDatePosted(String datePosted) {
-        this.datePosted = datePosted;
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 }

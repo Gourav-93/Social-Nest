@@ -20,9 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const postElement = document.createElement('article');
                 postElement.className = 'post-card';
                 
-                const authorName = post.authorName || 'Anonymous';
-                const userProfileImage = post.userProfileImage || 'https://via.placeholder.com/40';
-                const datePosted = post.datePosted || new Date().toLocaleDateString();
+                const authorName = post.user?.fullName || 'Unknown User';
+                const userProfileImage = post.user?.avatar || 'https://via.placeholder.com/40';
+                let datePosted = new Date().toLocaleDateString();
+                if (post.createdDate) {
+                    datePosted = new Date(post.createdDate).toLocaleDateString();
+                }
 
                 postElement.innerHTML = `
                     <header class="post-header">
@@ -35,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </header>
                     <img
-                        src="${post.pic || 'https://via.placeholder.com/400'}"
+                        src="${post.image || 'https://via.placeholder.com/400'}"
                         alt="Post by ${authorName}"
                         class="post-image"
                     />

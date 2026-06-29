@@ -1,6 +1,8 @@
 package com.example.instagram.Controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,43 +21,19 @@ public class PostController {
     @Autowired
     private PostRepository postRepository;
 
-    @Autowired
-    private com.example.instagram.Repository.UserRepository userRepository;
-
     @GetMapping("/api/post")
-    @CrossOrigin("*")
-    public List<com.example.instagram.Dto.PostDTO> getPosts() {
-        List<PostModel> posts = postRepository.findAll();
-        List<com.example.instagram.Dto.PostDTO> postDTOs = new java.util.ArrayList<>();
-        
-        for (PostModel post : posts) {
-            com.example.instagram.Dto.PostDTO dto = new com.example.instagram.Dto.PostDTO();
-            dto.setId(post.getId());
-            dto.setPic(post.getPic());
-            dto.setCaption(post.getCaption());
-            dto.setUserId(post.getUserId());
-            
-            if (post.getUserId() != null) {
-                com.example.instagram.Model.UserModel user = userRepository.findById(post.getUserId()).orElse(null);
-                if (user != null) {
-                    dto.setAuthorName(user.getFullName());
-                    dto.setUserProfileImage(user.getAvatar());
-                }
-            }
-            postDTOs.add(dto);
-        }
-        return postDTOs;
+    public List<PostModel> getPosts() {
+        return postRepository.findAll();
     }
 
     @PostMapping("/api/post")
-    @CrossOrigin("*")
+    public Map<String, String> addPost(@RequestBody PostModel post) {
 
-    public java.util.Map<String, String> addPost(@RequestBody PostModel post)
-    {
         postRepository.save(post);
-        java.util.Map<String, String> response = new java.util.HashMap<>();
-        response.put("message", "success");
+
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Success");
+
         return response;
     }
-
 }
