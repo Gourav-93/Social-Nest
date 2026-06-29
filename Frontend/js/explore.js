@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             contentContainer.innerHTML = '<div class="empty-state">Loading posts...</div>';
             
-            const posts = await window.api.fetchPosts();
+            const data = await window.api.fetchPosts();
+            const posts = data.posts;
             
             contentContainer.innerHTML = '';
 
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const postElement = document.createElement('article');
                 postElement.className = 'post-card';
                 
-                const authorName = post.user?.fullName || 'Unknown User';
+                const authorName = post.userName || 'Unknown User';
                 const userProfileImage = post.user?.avatar || 'https://via.placeholder.com/40';
                 let datePosted = new Date().toLocaleDateString();
                 if (post.createdDate) {
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </header>
                     <img
-                        src="${post.image || 'https://via.placeholder.com/400'}"
+                        src="${post.pic || 'https://via.placeholder.com/400'}"
                         alt="Post by ${authorName}"
                         class="post-image"
                     />
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
 
                 // Handle image error gracefully
-                const img = postElement.querySelector('img');
+                const img = postElement.querySelector('.post-image');
                 img.addEventListener('error', function() {
                     this.src = 'https://placehold.co/400x400/eeeeee/31343c?text=Image+Not+Found';
                 }, { once: true });

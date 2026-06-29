@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 
 @Entity
 public class PostModel {
@@ -17,6 +18,10 @@ public class PostModel {
     private String pic;
     private String caption;
     private Long userId;
+
+    @Transient
+    private String userName;
+
 
     public PostModel() {
     }
@@ -57,6 +62,14 @@ public class PostModel {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
 }
